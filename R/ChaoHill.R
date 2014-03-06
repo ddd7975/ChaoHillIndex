@@ -1,5 +1,6 @@
 ChaoHill <-
-function(dat, from, to, interval, B, conf, datatype){ # for real data estimation
+function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
+         B=200, conf=0.95, detail=c(TRUE, FALSE)){ # for real data estimation
   q <- seq(from, to, by=interval)
   if (datatype == "abundance"){
     y <- dat; n <- sum(dat)
@@ -34,13 +35,32 @@ function(dat, from, to, interval, B, conf, datatype){ # for real data estimation
   conf.reg(q, ci.pro.l, ci.pro.u, col=adjustcolor("green", 0.25), border=NA)
   legend("topright", legend=c("MLE", "Proposed"),
          lty=c(1, 5), lwd=c(1, 2), col=c(1, "red"), cex=1, bty="n")
-  table.est <- matrix(c(out.mle[1,][which(round(q)==q)], out.pro[1,][which(round(q)==q)]),
-                      nrow=2, byrow=T)
+  if (detail == TRUE){
+    table.est <- data.frame(matrix(c(out.mle[1,], out.pro[1,]),
+                                   nrow=2, byrow=T))
+  }else{
+    table.est <- data.frame(matrix(c(out.mle[1,][which(round(q)==q)], out.pro[1,][which(round(q)==q)]),
+                                   nrow=2, byrow=T))
+  }
   rownames(table.est)=c("MLE", "Pro")
-  colnames(table.est)=c("q=0", "q=1", "q=2")
-  table.sd <- matrix(c(out.mle[2,][which(round(q)==q)], out.pro[2,][which(round(q)==q)]),
-                     nrow=2, byrow=T)
+  if (detail==T){
+    colnames(table.est)=paste("q =", q)    
+  }else{
+    colnames(table.est)=c("q=0", "q=1", "q=2")
+  }
+  
+  if(detail==T){
+    table.sd <- data.frame(matrix(c(out.mle[2,], out.pro[2,]),
+                                  nrow=2, byrow=T))
+  }else{
+    table.sd <- data.frame(matrix(c(out.mle[2,][which(round(q)==q)], out.pro[2,][which(round(q)==q)]),
+                                nrow=2, byrow=T))
+  }
   rownames(table.sd)=c("MLE", "Pro")
-  colnames(table.sd)=c("q=0", "q=1", "q=2")
-  return(list(EST = data.frame(table.est), SD = data.frame(table.sd)))
+  if(detail==T){
+    colnames(table.sd)=paste("q =", q)  
+    }else{
+    colnames(table.sd)=c("q=0", "q=1", "q=2")
+  }
+  return(list(EST = table.est, SD = table.sd))
 }
