@@ -53,7 +53,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
     table.est <- data.frame(matrix(c(out.mle[1,][which(round(q)==q)], out.pro[1,][which(round(q)==q)]),
                                    nrow=2, byrow=T))
   }
-  rownames(table.est)=c("Obersved", "Proposed")
+  rownames(table.est)=c("Obersved", "Chao_2013")
   if (detail==T){
     colnames(table.est)=paste("q =", q)    
   }else{
@@ -67,7 +67,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
     table.sd <- data.frame(matrix(c(out.mle[2,][which(round(q)==q)], out.pro[2,][which(round(q)==q)]),
                                 nrow=2, byrow=T))
   }
-  rownames(table.sd)=c("Obersved", "Proposed")
+  rownames(table.sd)=c("Obersved", "Chao_2013")
   if(detail==T){
     colnames(table.sd)=paste("q =", q)  
     }else{
