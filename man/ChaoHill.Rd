@@ -1,13 +1,13 @@
-\name{HillPlot}
-\alias{HillPlot}
+\name{ChaoHill}
+\alias{ChaoHill}
 \title{
 Estimation of Hill's number
 }
 \description{
-\kbd{Hillplot} is a function to provide a Species richness estimator and curve.
+\kbd{ChaoHill} is a function to provide a Species richness estimator and curve.
 }
 \usage{
-HillPlot(dat, from, to, interval, B, conf, datatype)
+ChaoHill(dat, from, to, interval, B, conf, datatype)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,7 +33,7 @@ positive number \eqn{\le} 1. "\code{conf}" specifies the confidence level for co
 the data type of input data. That is individual-based abundance data (\code{datatype = "abundance"}) or sample-based incidence data (\code{datatype = "incidence"}).
 }
 \value{
-\kbd{HillPlot} returns a table of Hill's number estimators, their standard error and 95 \% confidence interval which the \code{method} you choose.
+\kbd{ChaoHill} returns a table of Hill's number estimators, their standard error and 95 \% confidence interval which the \code{method} you choose.
 }
 \references{
 

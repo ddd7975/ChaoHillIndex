@@ -1,4 +1,4 @@
-HillPlot <-
+ChaoHill <-
 function(dat, from, to, interval, B, conf, datatype){ # for real data estimation
   q <- seq(from, to, by=interval)
   if (datatype == "abundance"){
