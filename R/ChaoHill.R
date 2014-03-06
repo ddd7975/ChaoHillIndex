@@ -19,9 +19,11 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   z <- -qnorm((1 - conf)/2)
   D <- length(which(y != 0)); U <- sum(y)
   out.pro <- qDPRO(dat, q, B, datatype)
-  ci.pro.l <- out.pro[1,] - z*out.pro[2,];ci.pro.u <- out.pro[1,] + z*out.pro[2,]
+  ci.pro.l <- round(out.pro[1,] - z*out.pro[2,], 3)
+  ci.pro.u <- round(out.pro[1,] + z*out.pro[2,], 3)
   out.mle <- qDMLE(dat, q, B, datatype)
-  ci.mle.l <- out.mle[1,] - z*out.mle[2,];ci.mle.u <- out.mle[1,] + z*out.mle[2,]
+  ci.mle.l <- round(out.mle[1,] - z*out.mle[2,], 3)
+  ci.mle.u <- round(out.mle[1,] + z*out.mle[2,], 3)
   plot(q, out.pro[1,], type="l", lty=5, lwd=2, col=2, 
        xlab="index q",
        ylab=expression(paste(""^q, "D")), 
@@ -46,7 +48,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   if (detail==T){
     colnames(table.est)=paste("q =", q)    
   }else{
-    colnames(table.est)=c("q=0", "q=1", "q=2")
+    colnames(table.est)=c("q = 0", "q = 1", "q = 2")
   }
   
   if(detail==T){
@@ -60,7 +62,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   if(detail==T){
     colnames(table.sd)=paste("q =", q)  
     }else{
-    colnames(table.sd)=c("q=0", "q=1", "q=2")
+    colnames(table.sd)=c("q = 0", "q = 1", "q = 2")
   }
   return(list(EST = table.est, SD = table.sd))
 }
