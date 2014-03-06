@@ -1,6 +1,15 @@
 ChaoHill <-
 function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
          B=200, conf=0.95, detail=c(TRUE, FALSE)){ # for real data estimation
+  if (is.matrix(dat) == T || is.data.frame(dat) == T){
+    if (ncol(dat) != 1 & nrow(dat) != 1)
+      stop("Error: The data format is wrong.")
+    if (ncol(dat) == 1){
+      data <- data[, 1]
+    } else {
+      data <- data[1, ]
+    }
+  }
   q <- seq(from, to, by=interval)
   if (datatype == "abundance"){
     y <- dat; n <- sum(dat)
