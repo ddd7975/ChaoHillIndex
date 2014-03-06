@@ -55,7 +55,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   }
   rownames(table.est)=c("Obersved", "Chao_2013")
   if (detail==T){
-    colnames(table.est)=paste("q =", q)    
+    colnames(table.est)=paste("q=", q, sep="")    
   }else{
     colnames(table.est)=c("q = 0", "q = 1", "q = 2")
   }
@@ -69,7 +69,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   }
   rownames(table.sd)=c("Obsersved", "Chao_2013")
   if(detail==T){
-    colnames(table.sd)=paste("q =", q)  
+    colnames(table.sd)=paste("q=", q, sep="")  
     }else{
     colnames(table.sd)=c("q = 0", "q = 1", "q = 2")
   }
