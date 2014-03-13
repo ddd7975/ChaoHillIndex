@@ -10,6 +10,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
       dat <- dat[1, ]
     }
   }
+  dat <- as.numeric(dat)
   q <- seq(from, to, by=interval)
   if (datatype == "abundance"){
     y <- dat; n <- sum(dat)
