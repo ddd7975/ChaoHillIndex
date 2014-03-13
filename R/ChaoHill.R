@@ -5,9 +5,9 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
     if (ncol(dat) != 1 & nrow(dat) != 1)
       stop("Error: The data format is wrong.")
     if (ncol(dat) == 1){
-      data <- data[, 1]
+      dat <- dat[, 1]
     } else {
-      data <- data[1, ]
+      dat <- dat[1, ]
     }
   }
   q <- seq(from, to, by=interval)
@@ -52,6 +52,9 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
   }else{
     table.est <- data.frame(matrix(c(out.mle[1,][which(round(q)==q)], out.pro[1,][which(round(q)==q)]),
                                    nrow=2, byrow=T))
+    table.est <- data.frame(matrix(c(out.mle[1,][which((q %in% c(0, 1, 2))==T)],
+                                     out.pro[1,][which((q %in% c(0, 1, 2))==T)]),
+                                   nrow=2, byrow=T))
   }
   rownames(table.est)=c("Obersved", "Chao_2013")
   if (detail==T){
@@ -64,7 +67,8 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
     table.sd <- data.frame(matrix(c(out.mle[2,], out.pro[2,]),
                                   nrow=2, byrow=T))
   }else{
-    table.sd <- data.frame(matrix(c(out.mle[2,][which(round(q)==q)], out.pro[2,][which(round(q)==q)]),
+    table.sd <- data.frame(matrix(c(out.mle[2,][which((q %in% c(0, 1, 2))==T)], 
+                                    out.pro[2,][which((q %in% c(0, 1, 2))==T)]),
                                 nrow=2, byrow=T))
   }
   rownames(table.sd)=c("Obsersved", "Chao_2013")
