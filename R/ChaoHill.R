@@ -46,7 +46,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
                                   nrow=2, byrow=T))
     table.lci <- table.est - z*table.sd
     table.uci <- table.est + z*table.sd
-    colnames(table.est) <- colnames(table.sd) <- colnames(table.lci) <- colnames(table.uci) <- paste("q=", q, sep="")    
+    colnames(table.est) <- colnames(table.sd) <- colnames(table.lci) <- colnames(table.uci) <- paste("q = ", q, sep="")    
   }else{
     table.est <- data.frame(matrix(c(out.mle[1,][which((q %in% c(0, 1, 2))==T)],
                                      out.pro[1,][which((q %in% c(0, 1, 2))==T)]),
@@ -56,7 +56,7 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
                                   nrow=2, byrow=T))
     table.lci <- table.est - z*table.sd
     table.uci <- table.est + z*table.sd
-    colnames(table.est) <- colnames(table.sd) <- colnames(table.lci) <- colnames(table.uci) <- c("q=0", "q=1", "q=2")
+    colnames(table.est) <- colnames(table.sd) <- colnames(table.lci) <- colnames(table.uci) <- c("q = 0", "q = 1", "q = 2")
   }
   rownames(table.est) <- rownames(table.sd) <- rownames(table.lci) <- rownames(table.uci) <- c("Observed", "Chao_2013")
   return(list(EST = round(table.est, 3), 
