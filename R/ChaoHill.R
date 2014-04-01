@@ -59,5 +59,8 @@ function(dat, datatype=c("abundance", "incidence"), from=0, to=2, interval=0.1,
     colnames(table.est) <- colnames(table.sd) <- colnames(table.lci) <- colnames(table.uci) <- c("q=0", "q=1", "q=2")
   }
   rownames(table.est) <- rownames(table.sd) <- rownames(table.lci) <- rownames(table.uci) <- c("Obersved", "Chao_2013")
-  return(list(EST = table.est, SD = table.sd, LCI = table.lci, UCI = table.uci))
+  return(list(EST = round(table.est, 3), 
+              SD = round(table.sd, 3),
+              LCI = round(table.lci, 3),
+              UCI = round(table.uci, 3)))
 }
