@@ -1,29 +1,25 @@
-## ChaoHill online 
+ChaoHill
+===========
 
-####Interactive data analytics using <a href="http://www.r-project.org/" target="_blank">R</a> and <a href="http://www.rstudio.com/shiny/" target="_blank">Shiny</a> by <a href="http://www.rstudio.com/" target="_blank">Rstudio</a>.####
+####The purpose of this R package ChaoHill is mainly to provide a new Hill's number estimator proposed by Chao et al. (2014) for both individual-based (abundance) data and sample-based (incidence) data.####
 
-- Author: Anne Chao ; K. S. Tseng ; Y. H. Lee 
+- Author: Anne Chao ; K. S. Tseng ; Y. H. Lee
+- Contributor: K.S. Tseng ddd7975@gmail.com
 - Maintainer: Anne Chao chao@stat.nthu.edu.tw
 - URL: http://chao.stat.nthu.edu.tw/blog/
 
-
-### Run the development version of the web app in the browser window
-- Required: A modern browser (e.g., Chrome, Firefox, or Safari). Internet Explorer is not supported.
-  
-  <a href="http://spark.rstudio.com/mikelee/ChaoEntropy-beta/" target="_blank">Click here link to ChaoEntropy web App</a>
-
-### Run the development version of the web app locally
-
-- Required: `R`
-- Required: A modern browser (e.g., `Chrome`, `Firefox`, or `Safari`). :warning: Internet Explorer may not supported.
-- Suggested: `Rstudio`
+### Run the development version
+- Required: [R](http://www.r-project.org/)
+- Suggested: [Rstudio](http://www.rstudio.com/ide/download/)
 
 Start R(studio) and copy-and-paste the commands below:
 
 ```coffee
-if (!require("shiny"))
-    install.packages("shiny")
-shiny::runGitHub('ChaoHill', 'ddd7975')
+if (!require("devtools"))
+    install.packages("devtools")
+devtools::install_github('ChaoHill','ddd7975')
+require(ChaoHill)
 ```
-  
 
+### License
+The ChaoHill package is licensed under the GPLv2. See the files listed below for additional details.
