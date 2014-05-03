@@ -19,6 +19,7 @@ if (!require("devtools"))
     install.packages("devtools")
 devtools::install_github('ChaoHill','ddd7975')
 require(ChaoHill)
+?(ChaoHill)
 ```
 
 ### License
